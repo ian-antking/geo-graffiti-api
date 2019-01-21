@@ -34,7 +34,9 @@ before((done) => {
 });
 
 after((done) => {
+  console.log('after called')
   mongoose.connection.close(() => {
+    console.log('connection close called')
     server.close();
     done();
   });
