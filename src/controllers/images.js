@@ -8,8 +8,13 @@ exports.postImage = (req, res) => {
     time: data.time,
     url: `${__dirname}/../images/${req.file.filename}`,
   });
-  console.log(image);
   image.save().then(() => {
     res.status(201).json(image);
+  });
+};
+
+exports.getImages = (req, res) => {
+  Image.find(req.query ? req.query : {}, (_, images) => {
+    res.status(200).json(images);
   });
 };

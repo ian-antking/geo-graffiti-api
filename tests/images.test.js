@@ -3,8 +3,14 @@ const DataFactory = require('./helpers/data-factory');
 
 describe('/images', () => {
   let imageData;
+  let imageList;
   beforeEach(() => {
+    imageList = [];
     imageData = DataFactory.image();
+    for (let i = 0; i < 10; i += 1) {
+      const image = DataFactory.image();
+      imageList.push(image);
+    }
   });
   describe('POST', () => {
     it('creates an image in the database', (done) => {
@@ -20,6 +26,21 @@ describe('/images', () => {
         .catch(error => {
           done(error);
         });
+    });
+  });
+  describe('GET', () => {
+    it('returns a list of images', (done) => {
+      ImageHelper.manyImages(imageList)
+        .then(() => {
+          ImageHelper.getImages()
+            .then(res => {
+              console.log(res.body.length);
+              expect(res.body.length).to.equal(10);
+              done();
+            })
+            .catch(error => done(error));
+        })
+        .catch(error => done(error));
     });
   });
 });
