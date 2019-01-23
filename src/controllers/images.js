@@ -6,7 +6,7 @@ exports.postImage = (req, res) => {
     lat: data.lat,
     lon: data.lon,
     time: data.time,
-    url: `${__dirname}/../images/${req.file.filename}`,
+    url: `${__dirname}/../../public/images/${req.file.filename}`,
   });
   image.save().then(() => {
     res.status(201).json(image);
