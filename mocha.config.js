@@ -33,10 +33,14 @@ before((done) => {
   });
 });
 
+afterEach((done) => {
+  mongoose.connection.dropDatabase(() => {
+    done();
+  });
+});
+
 after((done) => {
-  console.log('after called')
   mongoose.connection.close(() => {
-    console.log('connection close called')
     server.close();
     done();
   });
