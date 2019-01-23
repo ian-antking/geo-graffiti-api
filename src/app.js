@@ -1,6 +1,6 @@
 const express = require('express');
 const ImageRouter = require('./routes/images');
-const multer = require('multer');
+
 
 const app = express();
 

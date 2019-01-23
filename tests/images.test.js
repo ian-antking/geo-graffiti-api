@@ -34,7 +34,6 @@ describe('/images', () => {
         .then(() => {
           ImageHelper.getImages()
             .then(res => {
-              console.log(res.body.length);
               expect(res.body.length).to.equal(10);
               done();
             })
