@@ -6,7 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Geo Graffiti Api</title>
 </head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
 <body>
-    <h1>The System Works!</h1>
+    <h1>Geo Graffiti Api</h1>
+    <h2>Find Street art throughout space and time</h2>
+    <h3>/user</h3>
+    <h4>POST</h4>
+    <p>New users can be created with the following object:</p>
+    <ul>
+        <li>firstName (string)</li>
+        <li>lastName (string)</li>
+        <li>email (string)</li>
+        <li>password (string must be 8 characters)</li>
+    </ul>
+    <p>Successful requests will recieve a response with sanitized user information (no password).</p>
+    <h3>/auth/login</h3>
+    <h4>POST</h4>
+    <p>User can log in by posting:</p>
+    <ul>
+        <li>email</li>
+        <li>password</li>
+    </ul>
+    <p>Successful logins will recieve a json web token valid for one year</p>
+    <h3>/image</h3>
+    <h4>POST</h4>
+    <p>Images can be posted as multi-part form data:</p>
+    <ul>
+        <li>lat (latitude image was taken at, number)</li>
+        <li>lon (longitude image was taken at, number)</li>
+        <li>time (time image was taken at, number)</li>
+        <li>file (image file)</li>
+        <p>Valid JWT should be set in "Authorizer" header</p>
+    <h4>GET</h4>
+    <p>A get request returns all images on in the database.</p>
+    </ul>
 </body>
 </html>
