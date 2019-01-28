@@ -7,7 +7,7 @@ const upload = multer({ dest: `${__dirname}/../../public/images` });
 
 const router = express.Router();
 
-router.post('/', auth, upload.single('imageField'), ImageController.postImage);
+router.post('/', upload.single('imageField'), ImageController.postImage);
 router.get('/', ImageController.getImages);
 
 module.exports = router;
