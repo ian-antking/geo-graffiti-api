@@ -1,7 +1,7 @@
 const Image = require('../models/images');
 
 exports.postImage = (req, res) => {
-  const data = JSON.parse(req.body.imageData);
+  const data = req.body;
   const image = new Image({
     lat: data.lat,
     lon: data.lon,
