@@ -5,7 +5,9 @@ const AuthRouter = require('./routes/auth');
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json({
+  limit: '10mb',
+}));
 app.use(express.static('public'));
 
 app.use('/images', ImageRouter);

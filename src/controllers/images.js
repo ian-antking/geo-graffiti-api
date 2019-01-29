@@ -10,7 +10,10 @@ exports.postImage = (req, res) => {
   });
   image.save().then(() => {
     res.status(201).json(image);
-  });
+  })
+    .catch(error => {
+      res.status(500).json(error);
+    });
 };
 
 exports.getImages = (req, res) => {
