@@ -1,7 +1,7 @@
 const Image = require('../models/images');
 
 exports.postImage = (req, res) => {
-  const data = JSON.parse(req.body.imageData);
+  const data = req.body;
   const image = new Image({
     lat: data.lat,
     lon: data.lon,
@@ -10,7 +10,10 @@ exports.postImage = (req, res) => {
   });
   image.save().then(() => {
     res.status(201).json(image);
-  });
+  })
+    .catch(error => {
+      res.status(500).json(error);
+    });
 };
 
 exports.getImages = (req, res) => {
