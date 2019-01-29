@@ -6,6 +6,7 @@ exports.addUser = (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
+    user: req.authorizer._id,
   });
 
   user.save().then(() => {

@@ -17,6 +17,10 @@ const ImageSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+  },
 });
 
 const Image = mongoose.model('image', ImageSchema);
