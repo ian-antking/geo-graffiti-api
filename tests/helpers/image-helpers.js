@@ -4,7 +4,7 @@ exports.postImage = (credentials, data) => new Promise((resolve, reject) => {
   chai.request(server)
     .post('/images')
     .set('Authorizer', credentials)
-    .attach('imageField', fs.readFileSync(`${__dirname}/llama.jpg`), 'llama.jpg')
+    .attach('image', fs.readFileSync(`${__dirname}/llama.jpg`), 'llama.jpg')
     .field('imageData', JSON.stringify(data))
     .end((error, response) => {
       if (error) {
@@ -20,7 +20,7 @@ exports.manyImages = (credentials, data) => new Promise((resolve, reject) => {
     chai.request(server)
       .post('/images')
       .set('Authorizer', credentials)
-      .attach('imageField', fs.readFileSync(`${__dirname}/llama.jpg`), 'llama.jpg')
+      .attach('image', fs.readFileSync(`${__dirname}/llama.jpg`), 'llama.jpg')
       .field('imageData', JSON.stringify(image))
       .end((error, response) => {
         if (error) {
