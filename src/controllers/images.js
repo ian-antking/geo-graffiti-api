@@ -9,12 +9,12 @@ exports.postImage = (req, res) => {
     lat: data.lat,
     lon: data.lon,
     time: data.time,
-    url: `${process.env.S3_SERVER}${req.file.filename}`,
+    url: `${process.env.S3_SERVER}${req.file.originalName}`,
   });
   const params = {
     Body: req.file.buffer,
-    Bucket: process.env.s3_Bucket,
-    Key: req.file.filename,
+    Bucket: 'geo-graffiti/images',
+    Key: req.file.originalName,
   };
   s3.putObject(params, (err) => {
     if (err) {

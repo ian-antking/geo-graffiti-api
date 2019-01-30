@@ -4,7 +4,7 @@ const multer = require('multer');
 const auth = require('../middleware/auth');
 
 const upload = multer({
-  dest: __dirname,
+  storage: multer.memoryStorage(),
 });
 
 const router = express.Router();
