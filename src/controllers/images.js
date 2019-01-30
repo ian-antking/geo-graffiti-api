@@ -14,7 +14,7 @@ exports.postImage = (req, res) => {
   });
   const params = {
     Body: req.file.buffer,
-    Bucket: 'geo-graffiti/images',
+    Bucket: 'geo-graffiti',
     Key: req.file.originalName,
   };
   s3.putObject(params, (err) => {
