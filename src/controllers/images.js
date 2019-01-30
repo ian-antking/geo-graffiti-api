@@ -4,7 +4,6 @@ const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
 exports.postImage = (req, res) => {
-  console.log(req.file);
   const data = req.body;
   const image = new Image({
     lat: data.lat,
@@ -12,6 +11,7 @@ exports.postImage = (req, res) => {
     time: data.time,
     url: `${process.env.S3_SERVER}${req.file.originalName}`,
   });
+  console.log(req.file.originalName);
   const params = {
     Body: req.file.buffer,
     Bucket: 'geo-graffiti',
