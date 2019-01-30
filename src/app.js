@@ -6,7 +6,7 @@ const AuthRouter = require('./routes/auth');
 const app = express();
 
 const log = (req, res, next) => {
-  console.log('Content-Length');
+  console.log(req.get('Content-Length'));
   next();
 };
 
