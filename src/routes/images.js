@@ -3,9 +3,7 @@ const ImageController = require('../controllers/images');
 const multer = require('multer');
 const auth = require('../middleware/auth');
 
-const upload = multer({
-  limits: { fieldSize: 25 * 1024 * 1024 },
-});
+const upload = multer();
 
 const router = express.Router();
 
