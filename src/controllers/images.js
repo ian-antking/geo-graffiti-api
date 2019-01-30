@@ -1,4 +1,7 @@
 const Image = require('../models/images');
+const AWS = require('aws-sdk');
+
+const s3 = new AWS.S3();
 
 exports.postImage = (req, res) => {
   const data = req.body;
@@ -6,14 +9,25 @@ exports.postImage = (req, res) => {
     lat: data.lat,
     lon: data.lon,
     time: data.time,
-    url: `${__dirname}/../../public/images/${req.file.filename}`,
+    url: `${process.env.S3_SERVER}${req.file.filename}`,
   });
-  image.save().then(() => {
-    res.status(201).json(image);
-  })
-    .catch(error => {
-      res.status(500).json(error);
-    });
+  const params = {
+    Body: req.file.buffer,
+    Bucket: process.env.s3_Bucket,
+    Key: req.file.filename,
+  };
+  s3.putObject(params, (err) => {
+    if (err) {
+      res.status(500).json({ error: err });
+    } else {
+      image.save().then(() => {
+        res.status(201).json(image);
+      })
+        .catch(error => {
+          res.status(500).json(error);
+        });
+    }
+  });
 };
 
 exports.getImages = (req, res) => {
