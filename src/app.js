@@ -5,6 +5,13 @@ const AuthRouter = require('./routes/auth');
 
 const app = express();
 
+const log = (req, res, next) => {
+  console.log('Content-Length');
+  next();
+};
+
+app.use(log);
+
 app.use(express.json({
   limit: '10mb',
 }));
