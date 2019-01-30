@@ -18,12 +18,14 @@ exports.postImage = (req, res) => {
   };
   s3.putObject(params, (err) => {
     if (err) {
+      console.log(err);
       res.status(500).json({ error: err });
     } else {
       image.save().then(() => {
         res.status(201).json(image);
       })
         .catch(error => {
+          console.log(error);
           res.status(500).json(error);
         });
     }
