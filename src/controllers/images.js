@@ -14,19 +14,17 @@ exports.postImage = (req, res) => {
   const params = {
     Body: req.file.buffer,
     Bucket: 'geo-graffiti',
-    Key: req.file.originalname,
+    Key: `${req.file.originalname}.jpeg`,
   };
   s3.putObject(params, (err) => {
     if (err) {
-      console.log(err);
       res.status(500).json({ error: err });
     } else {
       image.save().then(() => {
         res.status(201).json(image);
       })
         .catch(error => {
-          console.log(error);
-          res.status(500).json(error);
+          res.status(500).json({ error: error });
         });
     }
   });
