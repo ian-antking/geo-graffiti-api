@@ -9,7 +9,7 @@ exports.postImage = (req, res) => {
     lat: data.lat,
     lon: data.lon,
     time: data.time,
-    url: `${process.env.S3_SERVER}${req.file.originalname}`,
+    url: `${process.env.S3_SERVER}${req.file.originalname}.jpeg`,
   });
   const params = {
     Body: req.file.buffer,
