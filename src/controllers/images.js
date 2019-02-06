@@ -31,7 +31,7 @@ exports.postImage = (req, res) => {
 };
 
 exports.getImages = (req, res) => {
-  Image.find(req.query ? req.query : {}, (_, images) => {
+  Image.find(req.params.id ? { _id: req.params.id } : {}, (_, images) => {
     res.status(200).json(images);
   });
 };
