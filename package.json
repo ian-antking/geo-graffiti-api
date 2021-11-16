@@ -28,7 +28,7 @@
     "nodemon": "^1.18.9"
   },
   "dependencies": {
-    "aws-sdk": "^2.395.0",
+    "aws-sdk": "^2.814.0",
     "bcrypt": "^3.0.3",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
